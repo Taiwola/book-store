@@ -1,3 +1,4 @@
+// models
 const Users = require("../models/users.model");
 
 // user get request
