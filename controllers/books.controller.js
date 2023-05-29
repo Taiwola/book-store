@@ -1,11 +1,18 @@
-const Book = require("../models/books.model");
+// library/modules
 const fs = require("fs");
 const path = require("path");
 const mongoose = require("mongoose");
 const { title } = require("process");
+
+
+// models
+const Book = require("../models/books.model");
 const Customer = require("../models/customer.model");
-const multer = require("multer");
-const upload = require("../middlewares/upload");
+
+// helper functions
+
+// define const 
+
 
 const addBook = async (req, res) => {
   const { title, price, authorName } = req.body;

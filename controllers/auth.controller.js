@@ -286,7 +286,6 @@ const handleRefreshToken = async (req, res) => {
   const refreshToken = req.cookies?.jwt;
   if (!refreshToken)
     return res.status(400).json({ message: "no cookies and no jwt" });
-  console.log("refresh token:", refreshToken);
 
   try {
     // const decoded = await new Promise((resolve, reject) => {
@@ -327,8 +326,6 @@ const handleRefreshToken = async (req, res) => {
     );
 
 
-    // TAKE OFF THE CONSOLE.LOGS
-    console.log("accesstoken:", accessToken);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "internal server error" });
