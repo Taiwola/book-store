@@ -17,7 +17,6 @@ const Customer = require("../models/customer.model");
 const addBook = async (req, res) => {
   const { title, price, authorName } = req.body;
   const image = {
-    data: req.file.buffer,
     contentType: req.file.mimetype,
   };
 

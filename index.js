@@ -7,7 +7,9 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const compression = require('compression');
 const path = require('path');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const ejs = require('ejs');
+const expressLayout = require('express-ejs-layouts');
 
 // Import utils
 const connectDB = require("./utils/dbConnect");
@@ -18,6 +20,7 @@ const connectDB = require("./utils/dbConnect");
 const users = require("./routes/users.router");
 const auth = require("./routes/auth.router");
 const books = require("./routes/books.routes");
+const page = require('./routes/page.routes');
 
 // Define middlewares
 const app = express();
@@ -37,14 +40,14 @@ app.use(cookieParser());
 
 // Static assets
 app.use("/", express.static(path.join(__dirname, "public")));
+app.set('layout', './layouts/main');
+app.set('view engine', 'ejs');
 
 // use custom middelwares
 
 //use routes
-app.get("/api", (req, res) => {
-    res.send('welcome to books server');
-});
 
+app.use('/', page)
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/books', books);
